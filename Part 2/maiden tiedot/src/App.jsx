@@ -9,24 +9,22 @@ const App = () => {
 
   const api_key = import.meta.env.VITE_SOME_KEY;
 
-  // 🔹 Haetaan kaikki maat API:sta
   useEffect(() => {
     axios.get("https://studies.cs.helsinki.fi/restcountries/api/all").then((response) => {
       setCountries(response.data);
     });
   }, []);
 
-  // 🔹 Suodatetaan maat hakuehdon perusteella
   const filteredCountries = search
     ? countries.filter((country) =>
         country.name.common.toLowerCase().includes(search.toLowerCase())
       )
     : [];
 
-  // 🔹 Haetaan sää API:sta, jos maa on valittu
+
   useEffect(() => {
     if (selectedCountry) {
-      const capital = selectedCountry.capital?.[0]; // Tarkistetaan, että pääkaupunki on olemassa
+      const capital = selectedCountry.capital?.[0];
       if (capital) {
         axios
           .get(`https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${api_key}`)
