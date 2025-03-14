@@ -7,8 +7,8 @@ const App = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [weather, setWeather] = useState(null);
 
-  const api_key = import.meta.env.VITE_SOME_KEY;
-
+  const api_key = import.meta.env.VITE_WEATHER_API_KEY;
+  
   useEffect(() => {
     axios.get("https://studies.cs.helsinki.fi/restcountries/api/all").then((response) => {
       setCountries(response.data);
