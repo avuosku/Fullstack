@@ -3,10 +3,13 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001/api/persons";
 
 const getAll = () => {
-    return axios.get(baseUrl).then(response => {
-        return response.data;
+  return axios.get(baseUrl)
+    .then(response => response.data)
+    .catch(error => {
+      console.error("Error fetching persons:", error);
+      throw error;
     });
-  };
+};
   
   const create = (newObject) => {
     return axios.post(baseUrl, newObject).then(response => response.data);
