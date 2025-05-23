@@ -9,3 +9,21 @@ morgan.token("post-data", (req) => {
 });
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-data'));
+
+app.post('/api/persons', (req, res) => {
+    const { name, number } = req.body;
+    
+    const person = new Person({
+      name,
+      number,
+    });
+  
+    person.save()
+      .then(savedPerson => {
+        res.json(savedPerson); 
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).send('Error saving person');
+      });
+  });
