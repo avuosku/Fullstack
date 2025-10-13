@@ -15,4 +15,5 @@ jobs:
         with:
           url: https://your-app.onrender.com  # Vaihda tähän oman appisi URL!
           max-attempts: 3
-          retry-delay: 10
+          retry-delay: '10s'      # Korjattu: merkkijono ja yksikkö
+          timeout: '30s'          # Lisätty esimerkkiaika, tarvittaessa muokkaa
