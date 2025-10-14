@@ -1,31 +1,38 @@
-name: Backend CI
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-
 jobs:
-  install-backend:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
 
-      - name: Install backend dependencies
-        run: npm ci
-        working-directory: "./Part 11/fullstack-pipeline-app/backend"
+      - name: Install dependencies
+        run: npm install
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
 
-      - name: Run backend tests
+      - name: Lint
+        run: npm run lint
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
+
+      - name: Build
+        run: npm run build
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
+
+      - name: Run unit tests
         run: npm test
-        working-directory: "./Part 11/fullstack-pipeline-app/backend"
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
+
+      - name: Deploy
+        if: ${{ github.event_name == 'push' }}
+        run: echo "🚀 Deploying to production..."
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
+
+
 
 
 
