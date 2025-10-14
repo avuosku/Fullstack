@@ -11,24 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Kloonaa repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Asenna Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Vaihda tarvittaessa
+          node-version: '18'
 
-      # 3. Asenna backend-riippuvuudet
       - name: Install backend dependencies
         run: npm ci
-        working-directory: ./backend  # Vaihda tähän oikea polku backend-kansioon
+        working-directory: "./Part 11/fullstack-pipeline-app/backend"
 
-      # 4. (Valinnainen) Suorita testit
       - name: Run backend tests
         run: npm test
-        working-directory: ./Part-11/fullstack-pipeline-app/backend
+        working-directory: "./Part 11/fullstack-pipeline-app/backend"
+
 
 
