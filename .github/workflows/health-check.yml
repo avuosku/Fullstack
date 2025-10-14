@@ -29,4 +29,5 @@ jobs:
       # 4. (Valinnainen) Suorita testit
       - name: Run backend tests
         run: npm test
-        working-directory: ./backend
+        working-directory: './Part 11/fullstack-pipeline-app/backend'
+
