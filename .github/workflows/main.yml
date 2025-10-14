@@ -1,35 +1,41 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  install-and-test:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: Install backend dependencies
-        working-directory: backend
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run backend tests
-        working-directory: backend
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Run unit tests
         run: npm test
 
-      - name: Install frontend dependencies
-        working-directory: frontend
-        run: npm ci
+      - name: Run E2E tests
+        run: npm run test:e2e
 
-      - name: Frontend tests placeholder
-        run: echo "No tests yet"
+      - name: Deploy
+        if: ${{ github.event_name == 'push' }}
+        run: echo "🚀 Deploying to production..."
