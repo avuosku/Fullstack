@@ -23,19 +23,25 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
 
       - name: Lint
         run: npm run lint
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
 
       - name: Build
         run: npm run build
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
 
       - name: Run unit tests
         run: npm test
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
 
       - name: Run E2E tests
         run: npm run test:e2e
+        working-directory: "Fullstack/Part 11/fullstack-pipeline-app/backend"
 
       - name: Deploy
         if: ${{ github.event_name == 'push' }}
         run: echo "🚀 Deploying to production..."
+
