@@ -13,41 +13,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2. Debug: näytä hakemistopuu
+      - name: Show directory structure
+        run: ls -R
+
+      # 3. Node.js
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 4. Install dependencies
       - name: Install dependencies
         run: npm install
         working-directory: './Part 11/fullstack-pipeline-app/backend'
 
+      # 5. Lint
       - name: Lint
         run: npm run lint
         working-directory: './Part 11/fullstack-pipeline-app/backend'
 
-      # Poista tämä jos sinulla ei ole build-skriptiä
+      # 6. Build (jos ei ole build-skriptiä, jatketaan virheen yli)
       - name: Build
         run: npm run build
         working-directory: './Part 11/fullstack-pipeline-app/backend'
         continue-on-error: true
 
-      # Tämä vaihe epäonnistui aiemmin koska package.json:issa ei ollut test-komentoa.
-      # Lisää esim. "test": "echo 'No tests'" jos ei ole oikeita testejä.
+      # 7. Run tests (lisää tarvittaessa "test": "echo 'No tests'" package.json:iin)
       - name: Run tests
         run: npm test
         working-directory: './Part 11/fullstack-pipeline-app/backend'
 
+      # 8. Deploy
       - name: Deploy
         if: ${{ github.event_name == 'push' }}
         run: echo "🚀 Deploying to production..."
         working-directory: './Part 11/fullstack-pipeline-app/backend'
-
-
-
-
-
-
