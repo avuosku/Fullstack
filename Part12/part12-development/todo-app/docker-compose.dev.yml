@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  todo-frontend:
+    build:
+      context: ./todo-frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-frontend:/app
+
+  todo-backend:
+    build:
+      context: ./todo-backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-backend:/app
+
+  mongo:
+    image: mongo
+
+  redis:
+    image: redis
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro

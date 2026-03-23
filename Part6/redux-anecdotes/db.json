@@ -1,0 +1,59 @@
+{
+  "anecdotes": [
+    {
+      "content": "If it hurts, do it more often",
+      "id": "1",
+      "votes": 15
+    },
+    {
+      "content": "Adding manpower to a late software project makes it later!",
+      "id": "2",
+      "votes": 6
+    },
+    {
+      "content": "The first 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+      "id": "3",
+      "votes": 27
+    },
+    {
+      "content": "But it works in my machine...",
+      "id": "4",
+      "votes": 10
+    },
+    {
+      "id": "b8e2",
+      "content": "How many programmers does it take to change a light bulb? None, that’s a hardware problem.",
+      "votes": 11
+    },
+    {
+      "id": "c947",
+      "content": "Provide options, not excuses",
+      "votes": 57
+    },
+    {
+      "id": "b04a",
+      "content": "Keep an eye on the big picture and review things happening around you",
+      "votes": 6
+    },
+    {
+      "id": "17b2",
+      "content": "Computers are fast; programmers keep it slow.",
+      "votes": 7
+    },
+    {
+      "id": "dc1d",
+      "content": "Be the catalyst for change",
+      "votes": 7
+    },
+    {
+      "id": "0257",
+      "content": "Good programmers can remember the code they wrote a month ago and rewrite it in case the source code is lost. Great programmers use git.",
+      "votes": 16
+    },
+    {
+      "id": "19b3",
+      "content": "It's not a bug; it's an undocumented feature.",
+      "votes": 1
+    }
+  ]
+}

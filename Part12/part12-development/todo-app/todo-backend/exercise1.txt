@@ -1,0 +1,9 @@
+Let's imagine that we have a Python application being developed by a team of six developers. The app is in active development and is to be released soon. In such a case, implementing Continuous Integration (CI) is essential for ensuring code quality, reducing integration problems, and maintaining a stable main branch.
+
+In the Python ecosystem, common CI steps like linting, testing, and building can be handled with well-known tools. For linting, flake8 or pylint are commonly used to catch syntax errors and enforce coding standards. For running tests, pytest is a popular and powerful testing framework. In case the application requires packaging or building (e.g., into a Docker image), tools like setuptools, tox, or Docker itself may be used depending on the deployment strategy.
+
+Besides Jenkins and GitHub Actions, there are other CI platforms available such as GitLab CI/CD, CircleCI, Travis CI, and Bitbucket Pipelines. Each of these platforms has its pros and cons depending on the integration level with the version control system, pricing, and configuration flexibility.
+
+When choosing between a self-hosted and a cloud-based CI solution, the decision depends on many factors. A cloud-based environment is often preferred for its ease of setup, scalability, and lower maintenance. It is ideal for smaller teams or projects with limited infrastructure resources. However, a self-hosted setup (e.g. Jenkins on a private server) might be necessary when data privacy, custom integrations, or full control over the CI environment are crucial
+
+To make this decision, I would need information about the project’s security requirements, budget, team expertise, and expected workload for the CI tasks. For most modern teams, especially in startups or smaller companies, a cloud-based CI/CD solution provides the best balance between effort and outcome.

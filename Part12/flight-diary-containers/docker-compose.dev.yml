@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    container_name: backend-dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+      - redis
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    container_name: frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    container_name: mongo-dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-dev
+    ports:
+      - "6379:6379"
+
+volumes:
+  mongo-data:
