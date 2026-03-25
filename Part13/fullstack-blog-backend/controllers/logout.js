@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Session } = require('../models');
-const tokenExtractor = require('../middleware/tokenExtractor');
+const tokenExtractor = require('../utils/tokenExtractor');
 
 // DELETE /api/logout
 // Poistaa kirjautuneen käyttäjän session
